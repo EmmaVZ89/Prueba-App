@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Perfil </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" [fullscreen]="true">
+  <ion-card>
+    <ion-card-content>
+      <h2>{{ user?.userName }}</h2>
+      <p>{{ user?.userEmail }}</p>
+      <p>{{ user?.userPhone }}</p>
+      <p>{{ user?.createdAt | date }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" shape="round" (click)="editProfile()"
+    >Editar Perfil</ion-button
+  >
+
+  <ion-button expand="block" shape="round" (click)="changePassword()"
+    >Cambiar Contraseña</ion-button
+  >
+
+  
+</ion-content>

@@ -1,0 +1,107 @@
+<ion-content>
+  <div class="upper">
+    <div class="icon">
+      <ion-icon name="person-circle-outline"></ion-icon>
+    </div>
+    <p id="login">INICIO DE SESIÓN</p>
+  </div>
+
+  <div class="middle">
+    <div class="box">
+      <form #loginForm="ngForm">
+        <p>Por favor ingresa a tu cuenta</p>
+
+        <!-- INPUT EMAIL -->
+        <ion-item>
+          <ion-label position="floating">Dirección de Email</ion-label>
+          <ion-input
+            type="email"
+            placeholder="Email"
+            name="email"
+            #email="ngModel"
+            [(ngModel)]="login.email"
+            required
+            email
+          ></ion-input>
+          <ion-icon
+            class="ion-align-self-center"
+            slot="end"
+            name="mail"
+          ></ion-icon>
+        </ion-item>
+        <div *ngIf="email.invalid && email.touched">
+          <ion-text color="danger text-center">
+            <h4 style="padding-left: 20px; margin-top: 10px; font-size: 14px">
+              Ingrese su Email
+            </h4>
+          </ion-text>
+        </div>
+
+        <!-- INPUT CONTRASEÑA -->
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input
+            [type]="type ? 'password' : 'text'"
+            placeholder="Contraseña"
+            name="password"
+            #password="ngModel"
+            [(ngModel)]="login.password"
+            required
+          ></ion-input>
+          <ion-icon
+            class="ion-align-self-center"
+            slot="end"
+            [name]="name ? 'eye-outline' : 'eye-off-outline'"
+            (click)="changeType()"
+          ></ion-icon>
+        </ion-item>
+        <div *ngIf="password.invalid && password.touched">
+          <ion-text color="danger text-center">
+            <h4 style="padding-left: 20px; margin-top: 10px; font-size: 14px">
+              Ingrese su Contraseña
+            </h4>
+          </ion-text>
+        </div>
+        <p id="forgetPassword">
+          <a [routerLink]="['/forgot-password']">Olvide mi contraseña</a>
+        </p>
+
+        <!-- BOTON INGRESAR -->
+        <div class="btn">
+          <ion-button (click)="loginUser()" [disabled]="loginForm.invalid"
+            >INGRESAR</ion-button
+          >
+        </div>
+      </form>
+
+      <!-- INGRESO CON REDES SOCIALES -->
+      <!-- <p id="media">O Ingresá con Redes Sociales</p>
+
+      <div class="socialMedia">
+        <ion-icon name="logo-facebook" (click)="facebookLogin()"></ion-icon>
+        <ion-icon name="logo-twitter" (click)="twitterLogin()"></ion-icon>
+        <ion-icon name="logo-google" (click)="gmailLogin()"></ion-icon>
+      </div> -->
+
+      <!-- INGRESO CON HUELLA DIGITAL -->
+      <!-- <div class="touchLogin" (click)="touchLogin()">
+        <ion-icon name="finger-print-outline"></ion-icon>
+        <p>Ingresa usando huella digital</p>
+      </div> -->
+
+      <!-- INGRESO CON RECONOCIMIENTO FACIAL -->
+      <!-- <div class="faceLogin" (click)="faceLogin()">
+        <ion-icon name="eye-outline"></ion-icon>
+        <p>Ingresa con reconocimiento facial</p>
+      </div> -->
+    </div>
+  </div>
+
+  <!-- NAVEGACION -->
+  <div class="navigator">
+    <p>
+      ¿No tienes una cuenta? ¡ Registrate
+      <a [routerLink]="['/register']">Aqui</a> !
+    </p>
+  </div>
+</ion-content>

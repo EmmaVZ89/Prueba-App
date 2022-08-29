@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Editar Perfil </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" [fullscreen]="true">
+
+  <ion-card>
+    <form>
+      <ion-list>
+
+        <ion-item>
+          <ion-label position="stacked">Nombre Completo</ion-label>
+          <ion-input required type="text" [(ngModel)]="name" name="name"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input required type="email" [(ngModel)]="email" name="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Teléfono</ion-label>
+          <ion-input required type="tel" [(ngModel)]="phone" name="phone"></ion-input>
+        </ion-item>
+        
+        <ion-button type="submit" expand="block" shape="round" (click)="updateProfile()">ACTUALIZAR</ion-button>
+
+      </ion-list>
+    </form>
+  </ion-card>
+
+</ion-content>

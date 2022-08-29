@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Home </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding container" [fullscreen]="true">
+  <div class="icon">
+    <ion-icon name="home-outline"></ion-icon>
+  </div>
+
+  <div class="box">
+    <!-- BIENVENIDA -->
+    <h1 class="ml3">BIENVENIDO</h1>
+    <!-- FIN BIENVENIDA -->
+
+    <div class="btn">
+      <ion-button (click)="goToProfile()">Perfil</ion-button>
+    </div>
+
+    <div class="btn">
+      <ion-button (click)="logOut()">Cerrar Sesión</ion-button>
+    </div>
+  </div>
+</ion-content>
+
+
+<!-- <ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button>
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button (click)="goToRegister()">
+      <ion-icon name="add-circle-outline"></ion-icon>
+      <ion-label>Registro</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button (click)="goToProfile()">
+      <ion-icon name="person-circle"></ion-icon>
+      <ion-label>Perfil</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button (click)="logOut()">
+      <ion-icon name="log-out-outline"></ion-icon>
+      <ion-label>Cerrar Sesión</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs> -->
+
+

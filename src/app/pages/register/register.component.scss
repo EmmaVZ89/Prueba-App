@@ -1,0 +1,36 @@
+ion-content {
+  --background: url("../../../assets/back-login.jpg") center/cover fixed;
+
+  ion-card {
+    padding: 20px;
+    border-radius: 10px;
+
+    ion-card-header {
+      ion-card-title {
+        color: #fff;
+      }
+    }
+
+    form {
+
+      ion-list {
+
+        ion-item {
+          --background: #fff;
+
+          ion-label {
+            color: #000;
+          }
+
+          ion-input {  
+            color: #555;
+          }
+        }
+      }
+    }
+
+    ion-button {
+      --background: #ff2200;
+    }
+  }
+}
