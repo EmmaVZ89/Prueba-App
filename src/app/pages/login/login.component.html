@@ -9,7 +9,7 @@
   <div class="middle">
     <div class="box">
       <form #loginForm="ngForm">
-        <p>Por favor ingresa a tu cuenta</p>
+        <p #goToSignIn>Por favor ingresa a tu cuenta</p>
 
         <!-- INPUT EMAIL -->
         <ion-item>
@@ -68,8 +68,54 @@
 
         <!-- BOTON INGRESAR -->
         <div class="btn">
-          <ion-button (click)="loginUser()" [disabled]="loginForm.invalid"
-            >INGRESAR</ion-button
+          <!-- <ion-button (click)="loginUser()" [disabled]="loginForm.invalid" -->
+          <ion-button (click)="loginUser()"><ion-icon
+            name="log-in-outline"
+            style="padding-right: 10px"
+          ></ion-icon
+          >INGRESAR</ion-button>
+        </div>
+
+        <hr />
+
+        <p>¡También puedes INGRESAR con los siguientes usuarios!</p>
+
+        <div class="btn">
+          <!-- <ion-button (click)="loginUser()" [disabled]="loginForm.invalid" -->
+          <ion-button
+            (click)="loadFastUser(1)"
+            style="--background: rgb(36, 35, 35)"
+            ><ion-icon
+              name="person-outline"
+              style="padding-right: 10px"
+            ></ion-icon
+            >USUARIO 1</ion-button
+          >
+        </div>
+
+        <div class="btn">
+          <!-- <ion-button (click)="loginUser()" [disabled]="loginForm.invalid" -->
+          <ion-button
+            (click)="loadFastUser(2)"
+            style="--background: rgb(15, 132, 185)"
+            ><ion-icon
+              name="person-outline"
+              style="padding-right: 10px"
+            ></ion-icon
+            >USUARIO 2</ion-button
+          >
+        </div>
+
+        <div class="btn">
+          <!-- <ion-button (click)="loginUser()" [disabled]="loginForm.invalid" -->
+          <ion-button
+            (click)="loadFastUser(3)"
+            style="--background: rgb(79, 212, 79)"
+            ><ion-icon
+              name="person-outline"
+              style="padding-right: 10px"
+            ></ion-icon
+            >USUARIO 3</ion-button
           >
         </div>
       </form>

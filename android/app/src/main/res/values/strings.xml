@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">PruebaApp</string>
-    <string name="title_activity_main">PruebaApp</string>
-    <string name="package_name">com.pruebaApp.app</string>
-    <string name="custom_url_scheme">com.pruebaApp.app</string>
+    <string name="app_name">PruebaAppv2</string>
+    <string name="title_activity_main">PruebaAppv2</string>
+    <string name="package_name">com.pruebaappv2.app</string>
+    <string name="custom_url_scheme">com.pruebaappv2.app</string>
 </resources>

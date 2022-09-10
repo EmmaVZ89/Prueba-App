@@ -1,6 +1,15 @@
 .container {
   // --background: #ff2200;
-  --background: url("../../../assets/back-login.jpg") center/cover fixed;
+  // --background: url("../../../assets/back-login.jpg") center/cover fixed;
+  --background: rgb(47, 21, 21);
+  --background: linear-gradient(
+    325deg,
+    rgba(47, 21, 21, 0.8468429608171394) 27%,
+    rgba(240, 8, 8, 1) 28%,
+    rgba(245, 8, 8, 1) 34%,
+    rgba(0, 0, 0, 1) 100%
+  );
+
 
   .icon {
     display: flex;

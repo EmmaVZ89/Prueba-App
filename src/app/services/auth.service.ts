@@ -38,42 +38,46 @@ export class AuthService {
   } // end of constructor
 
   async signIn(email, password) {
-    const loading = await this.LoadingController.create({
-      message: 'Verificando...',
-      spinner: 'crescent',
-      showBackdrop: true,
-    });
-
-    loading.present();
-
-    this.angularFireAuth
-      .setPersistence(firebase.default.auth.Auth.Persistence.LOCAL)
-      .then(() => {
-        this.angularFireAuth
-          .signInWithEmailAndPassword(email, password)
-          .then((data) => {
-            if (!data.user.emailVerified) {
-              data.user.sendEmailVerification();
-              loading.dismiss();
-              this.toast(
-                '¡Por favor verifica tu dirección de email!',
-                'warning'
-              );
-              this.angularFireAuth.signOut();
-            } else {
-              loading.dismiss();
-              this.router.navigate(['/home']);
-            }
-          })
-          .catch((error) => {
-            loading.dismiss();
-            this.toast(error.message, 'danger');
-          });
-      })
-      .catch((error) => {
-        loading.dismiss();
-        this.toast(error.message, 'danger');
+    try {
+      const loading = await this.LoadingController.create({
+        message: 'Verificando...',
+        spinner: 'crescent',
+        showBackdrop: true,
       });
+
+      loading.present();
+
+      this.angularFireAuth
+        .setPersistence(firebase.default.auth.Auth.Persistence.LOCAL)
+        .then(() => {
+          this.angularFireAuth
+            .signInWithEmailAndPassword(email, password)
+            .then((data) => {
+              // if (!data.user.emailVerified) {
+              //   data.user.sendEmailVerification();
+              //   loading.dismiss();
+              //   this.toast(
+              //     '¡Por favor verifica tu dirección de email!',
+              //     'warning'
+              //   );
+              //   this.angularFireAuth.signOut();
+              // } else {
+              loading.dismiss();
+              this.router.navigate(['/splash/home']);
+              // }
+            })
+            .catch((error) => {
+              loading.dismiss();
+              this.toast(this.createMessage(error.code), 'danger');
+            });
+        })
+        .catch((error) => {
+          loading.dismiss();
+          this.toast(error.message, 'danger');
+        });
+    } catch (error) {
+      console.log(error.message);
+    }
   } // end of signIn
 
   async signInWithGoogle() {
@@ -88,17 +92,20 @@ export class AuthService {
   } // end of signInWithGoogle
 
   async signOut() {
-    const loading = await this.LoadingController.create({
-      spinner: 'crescent',
-      showBackdrop: true,
-    });
-    loading.present();
-    
-    this.angularFireAuth.signOut()
-    .then(() => {
-      loading.dismiss();
-      this.router.navigate(['/login']);
-    });
+    try {
+      const loading = await this.LoadingController.create({
+        spinner: 'crescent',
+        showBackdrop: true,
+      });
+      loading.present();
+
+      this.angularFireAuth.signOut().then(() => {
+        loading.dismiss();
+        this.router.navigate(['/login']);
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
   } // end of signOut
 
   getUserLogged() {
@@ -106,12 +113,45 @@ export class AuthService {
   } // end of getUserLogged
 
   async toast(message, status) {
-    const toast = await this.toastController.create({
-      message: message,
-      color: status,
-      position: 'top',
-      duration: 2000,
-    });
-    toast.present();
+    try {
+      const toast = await this.toastController.create({
+        message: message,
+        color: status,
+        position: 'top',
+        duration: 2000,
+      });
+      toast.present();
+    } catch (error) {
+      console.log(error.message);
+    }
   } // end of toast
+
+  private createMessage(errorCode: string): string {
+    let message: string = '';
+    switch (errorCode) {
+      case 'auth/internal-error':
+        message = 'Los campos estan vacios';
+        break;
+      case 'auth/operation-not-allowed':
+        message = 'La operación no está permitida.';
+        break;
+      case 'auth/email-already-in-use':
+        message = 'El email ya está registrado.';
+        break;
+      case 'auth/invalid-email':
+        message = 'El email no es valido.';
+        break;
+      case 'auth/weak-password':
+        message = 'La contraseña debe tener al menos 6 caracteres';
+        break;
+      case 'auth/user-not-found':
+        message = 'No existe ningún usuario con estos identificadores';
+        break;
+      default:
+        message = 'Dirección de email y/o contraseña incorrectos';
+        break;
+    }
+
+    return message;
+  } // end of createMessage
 }

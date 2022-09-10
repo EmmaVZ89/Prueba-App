@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
       this.angularFireAuth
         .createUserWithEmailAndPassword(this.email, this.password)
         .then((data) => {
-          data.user.sendEmailVerification();
+          // data.user.sendEmailVerification();
           this.angularFirestore
             .collection('user')
             .doc(data.user.uid)
@@ -54,10 +54,10 @@ export class RegisterComponent implements OnInit {
             .then(() => {
               loading.dismiss();
               this.toast(
-                '¡Registro exitoso! Por favor verifica tu email',
+                '¡Registro exitoso!',
                 'success'
               );
-              this.router.navigate(['/login']);
+              // this.router.navigate(['/login']);
             })
             .catch((error) => {
               loading.dismiss();

@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'splash/login',
     pathMatch: 'full',
   },
   { path: 'login', component: LoginComponent },
@@ -23,7 +23,11 @@ const routes: Routes = [
   { path: 'profile/edit', component: ProfileEditComponent, canActivate: [AuthGuard] },
   { path: 'change-password', component: ChangePasswordComponent, canActivate: [AuthGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: '**', component: PageNotFoundComponent },
+  {
+    path: 'splash/:route',
+    loadChildren: () => import('./pages/splash/splash.module').then( m => m.SplashPageModule)
+  },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

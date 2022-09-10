@@ -1,0 +1,67 @@
+ion-content {
+  --background: rgb(47, 21, 21);
+  --background: linear-gradient(
+    325deg,
+    rgba(47, 21, 21, 0.8468429608171394) 27%,
+    rgba(240, 8, 8, 1) 28%,
+    rgba(245, 8, 8, 1) 34%,
+    rgba(0, 0, 0, 1) 100%
+  );
+
+  p {
+    color: #fff;
+    font-size: 3rem;
+    font-weight: bolder;
+    text-shadow: 2px 2px 4px rgb(255, 0, 0);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  :nth-child(1),
+  :nth-child(2),
+  :nth-child(3) {
+    margin-top: 1rem;
+    margin-bottom: 4rem;
+  }
+
+  img {
+    width: 17rem;
+  }
+}
+
+.roll-in-blurred-left {
+  -webkit-animation: roll-in-blurred-left 1s cubic-bezier(0.23, 1, 0.32, 1) 0.3s
+    both;
+  animation: roll-in-blurred-left 1s cubic-bezier(0.23, 1, 0.32, 1) 0.3s both;
+}
+@-webkit-keyframes roll-in-blurred-left {
+  0% {
+    -webkit-transform: translateX(-1000px) rotate(-720deg);
+    transform: translateX(-1000px) rotate(-720deg);
+    -webkit-filter: blur(50px);
+    filter: blur(50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0) rotate(0deg);
+    transform: translateX(0) rotate(0deg);
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+@keyframes roll-in-blurred-left {
+  0% {
+    -webkit-transform: translateX(-1000px) rotate(-720deg);
+    transform: translateX(-1000px) rotate(-720deg);
+    -webkit-filter: blur(50px);
+    filter: blur(50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0) rotate(0deg);
+    transform: translateX(0) rotate(0deg);
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}

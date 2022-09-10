@@ -1,6 +1,14 @@
 ion-content {
-  // --background: #ff2200;
-  --background: url("../../../assets/back-login.jpg") center/cover fixed;
+  // --background: url("../../../assets/back-login.jpg") center/cover;
+  --background: rgb(47, 21, 21);
+  --background: linear-gradient(
+    325deg,
+    rgba(47, 21, 21, 0.8468429608171394) 27%,
+    rgba(240, 8, 8, 1) 28%,
+    rgba(245, 8, 8, 1) 34%,
+    rgba(0, 0, 0, 1) 100%
+  );
+
   min-height: 100%;
 
   .upper {
@@ -59,10 +67,24 @@ ion-content {
       .btn {
         display: flex;
         justify-content: center;
-
+        --text-shadow: 1px 1px 2px #000;
+        
         ion-button {
-          --background: #ff2200;
+          --background: #ec5038;
+          width: 70vw;
+          font-weight: bold;
+          --text-shadow: 1px 1px 2px #000;
+          --box-shadow: 2px 2px 4px #000;
         }
+      }
+
+      hr {
+        border: 1px solid rgb(0, 0, 0) !important;
+        height: 5px !important;
+        width: 50% !important;
+        background: rgb(124, 122, 122) !important;
+        display: block !important;
+        border-radius: 10px;
       }
 
       #media {
